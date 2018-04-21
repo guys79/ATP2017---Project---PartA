@@ -9,6 +9,9 @@ import java.util.List;
  * This class will generate a maze using prim's algorithm
  */
 public class MyMazeGenerator extends AMazeGenerator {
+    /**
+     * The constructor
+     */
     public MyMazeGenerator()
     {
 

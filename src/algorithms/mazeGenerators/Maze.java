@@ -1,18 +1,29 @@
 package algorithms.mazeGenerators;
 
+/**
+ * This class represents a maze
+ */
 public class Maze {
-    //this instance of 2d array will represent our maze
-    private int[][]maze;
-    private Position start;
-    private Position goal;
-    //this is the constructor of maze
-    Maze(int[][] maze,Position start,Position goal){
+    //This instance of 2D array will represent our maze
+    private int[][]maze;//The two dimensional array (zero's and one's)
+    private Position start;//The starting position
+    private Position goal;//The goal
+
+    //This is the constructor of maze
+
+    /**The constructor of the maze
+     *
+     * @param maze - The two dimensional array (zero's and one's)
+     * @param start - The starting position
+     * @param goal - The goal
+     */
+    public Maze(int[][] maze,Position start,Position goal){
         this.start=start;
         this.goal=goal;
         //we take the length of the rows and columns in order to do deep coppy
         int column= maze[0].length;
         int row=maze.length;
-        //we do deep coppy
+        //we do deep copy
         int[][]MyMaze=new int[row][column];
         for(int i=0; i<row;i++){
             for(int j=0;j<column;j++){
@@ -22,12 +33,25 @@ public class Maze {
 
         this.maze=MyMaze;
     }
+
+    /**
+     * This function will return the starting position (deep copy)
+     * @return - will return the starting position (deep copy)
+     */
     public Position getStartPosition(){
         return new Position(start.GetColumnIndex(),start.GetRowIndex());
     }
+    /**
+     * This function will return the goal's position (deep copy)
+     * @return - will return the goal's position (deep copy)
+     */
     public Position getGoalPosition(){
         return new Position(goal.GetColumnIndex(),goal.GetRowIndex());
     }
+
+    /**
+     * This function will print the maze
+     */
     public void print(){
         //we take the length of the rows and columns in order to go over all the 2d array in order to print it all
         int column= maze[0].length;

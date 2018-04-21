@@ -11,7 +11,7 @@ public abstract class AMazeGenerator implements IMazeGenerator {
      * @param row - the number of rows
      * @return - This function will return the rime it takes to generate a maze
      */
-    public long measureAlgorithmTimeMillis(int row,int column)
+    public long  measureAlgorithmTimeMillis(int row,int column)
     {
         //Starting time
         long start = System.currentTimeMillis();

@@ -1,10 +1,22 @@
 package algorithms.mazeGenerators;
 
+/**
+ * This class represents a simple maze generator. Which means, a Maze generator that creates random mazes
+ */
 public class SimpleMazeGenerator extends AMazeGenerator {
+    /**
+     * This constructor
+     */
     public SimpleMazeGenerator(){
 
     }
-    //this function gives me a position that could be the start position or goal position randomely
+
+    /**
+     * This function gives me a position that could be the start position or goal position randomly
+     * @param column - Number of columns
+     * @param row - Number of rows
+     * @return - The new position
+     */
     private Position getStartEndPositions(int column, int row){
         int rowOrColumn = (int )(Math.random() * 2 + 1);
         Position p;
@@ -34,7 +46,16 @@ public class SimpleMazeGenerator extends AMazeGenerator {
         }
         return p;
     }
-    //this function should make a pass in the maze
+
+    /**
+     * This function should make a pass in the maze
+     * @param start _ The start position
+     * @param goal - The goal's position
+     * @param column  - number of columns
+     * @param row - number of rows
+     * @param myMaze - The array that represent the binary maze
+     * @return - The corrected maze
+     */
     private int[][] makePass(Position start,Position goal, int column, int row, int[][] myMaze){
         //we make the start and goal positions as positions that you can pass through
         myMaze[start.GetRowIndex()][start.GetColumnIndex()]=0;
@@ -76,6 +97,12 @@ public class SimpleMazeGenerator extends AMazeGenerator {
         return myMaze;
     }
 
+    /**
+     * This funcrtion will generate a new maze using Prim's algorithm
+     * @param row - The number of rows
+     * @param column - The number of columns
+     * @return - This function will return a new random binary maze
+     */
     public Maze generate(int row,int column) {
         //we get a start and goal position
         Position start= getStartEndPositions(column,row);
