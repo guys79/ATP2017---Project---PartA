@@ -1,20 +1,20 @@
 package algorithms.mazeGenerators;
 
 public class Position {
-    int x;
-    int y;
-    public Position(int x, int y)
-    {
-        this.x=x;
-        this.y=y;
+    private int row;
+    private int column;
+    Position(int row,int column){
+        this.row=row;
+        this.column=column;
     }
-
-    public int getX() {
-        return x;
+    public int GetRowIndex(){
+        return row;
     }
-
-    public int getY() {
-        return y;
+    public int GetColumnIndex(){
+        return column;
     }
-
+    //we override the printing in order to print an instance of position
+    public String toString(){
+        return "{"+row+","+column+"}";
+    }
 }
