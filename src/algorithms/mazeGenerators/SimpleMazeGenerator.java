@@ -111,18 +111,22 @@ public class SimpleMazeGenerator extends AMazeGenerator {
         while(goal.GetColumnIndex()==start.GetColumnIndex()&&start.GetRowIndex()==goal.GetRowIndex()){
             goal=getStartEndPositions(column,row);
         }
+
         //we initialize the maze with walls only
         int[][] myMaze = new int[row][column];
         for (int i = 0; i < row; i++) {
-            for (int j = 0; j < column; row++) {
+            for (int j = 0; j < column; j++) {
                 myMaze[i][j] = 1;
+                //System.out.print(j+i*column);
             }
         }
+
         //we make a pass through the maze
         myMaze=makePass(start,goal,column,row,myMaze);
+
         //we put randomely places that you can go through
         for (int i = 0; i < row; i++) {
-            for (int j = 0; j < column; row++) {
+            for (int j = 0; j < column; j++) {
                 if(myMaze[i][j]==1){
                     if((int )(Math.random() * 2 + 1)==1) {
                         myMaze[i][j] = 0;

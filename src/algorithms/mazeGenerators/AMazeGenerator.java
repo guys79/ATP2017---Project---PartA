@@ -13,6 +13,7 @@ public abstract class AMazeGenerator implements IMazeGenerator {
      */
     public long  measureAlgorithmTimeMillis(int row,int column)
     {
+
         //Starting time
         long start = System.currentTimeMillis();
         //The function
