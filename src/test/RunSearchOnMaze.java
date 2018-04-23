@@ -10,9 +10,9 @@ import java.util.ArrayList;
 /**
  * Created by Aviadjo on 3/22/2017.
  */
-/*
+
 public class RunSearchOnMaze {
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         IMazeGenerator mg = new MyMazeGenerator();
         Maze maze = mg.generate(30, 30);
         SearchableMaze searchableMaze = new SearchableMaze(maze);
@@ -32,5 +32,5 @@ public class RunSearchOnMaze {
         for (int i = 0; i < solutionPath.size(); i++) {
             System.out.println(String.format("%s. %s",i,solutionPath.get(i)));
         }
-    }
-}*/
+    }*/
+}

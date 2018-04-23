@@ -1,4 +1,10 @@
 package algorithms.search;
 
-public class ASearchingAlgorithm {
+import java.util.ArrayList;
+
+/**
+ * This class represents a searching algorithm
+ */
+public abstract class ASearchingAlgorithm implements  ISearchingAlgorithm{
+
 }

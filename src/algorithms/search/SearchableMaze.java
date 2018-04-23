@@ -1,4 +1,4 @@
 package algorithms.search;
 
-public class SearchableMaze {
+public class SearchableMaze implements ISearchable {
 }
