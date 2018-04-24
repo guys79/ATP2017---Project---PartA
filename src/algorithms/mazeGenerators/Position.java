@@ -18,6 +18,15 @@ public class Position {
     }
 
     /**
+     * The copy constructor
+     * @param pos - The given position
+     */
+    public Position(Position pos)
+    {
+        this(pos.row,pos.column);
+    }
+
+    /**
      * This function will return the index of the row
      * @return - The index of the row
      */

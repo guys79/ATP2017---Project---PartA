@@ -11,65 +11,130 @@ public abstract class AState {
     public boolean visited;//Have we been in this state already
     private int priority;//The priority of this state
     protected ArrayList<AState> possibleNextStates;//The possible moves
+    private AState predecessor;
 
 
     /**
      * The constructor
+     *
      * @param priority - The priority of this state
      */
-    protected AState(int priority)
+    protected AState(int priority) {
+        visited = false;
+        this.priority = priority;
+        possibleNextStates = new ArrayList<>();
+        predecessor=null;
+    }
+
+
+    /**
+     * This function will set the predecessor
+     * @param predecessor - The given predecessor
+     */
+    public void setPredecessor(AState predecessor)
     {
-        visited=false;
-        this.priority=priority;
-        possibleNextStates=new ArrayList<>();
+        this.predecessor=predecessor;
     }
 
     /**
+     * This function will return the predecessor of this state
+     * @return
+     */
+    public AState getPredecessor()
+    {
+        return  this.predecessor;
+    }
+    /**
      * The constructor, ww will set the priority to -1
      */
-    protected  AState()
-    {
+    protected AState() {
         this(-1);
     }
 
-    public int getPriority()
-    {
+    /**
+     * This function will return the priority of this state
+     *
+     * @return - This state's priority
+     */
+    public int getPriority() {
         return priority;
     }
 
-    public void addPossilbleState(AState aState)
-    {
+    /**
+     * This function will add a state to the possible states list
+     *
+     * @param aState - The given state
+     */
+    public void addPossilbleState(AState aState) {
         this.possibleNextStates.add(aState);
     }
-    public void removeState(AState aState)
-    {
+
+    /**
+     * This function will remove a given state fro the list of all possible states
+     *
+     * @param aState - The given state
+     */
+    public void removeState(AState aState) {
         this.possibleNextStates.remove(aState);
     }
-    public void removeStateAt(int index)
-    {
+
+    /**
+     * This function will remove a state from the list of possible states uusing a given index
+     *
+     * @param index - The given index
+     */
+    public void removeStateAt(int index) {
         this.possibleNextStates.remove(index);
     }
-    public void sortByPriority()
+
+    /**
+     * This function will return the state in thee list that is located in "index"
+     * @param index - The given index
+     * @return- The state in thee list that is located in "index"
+     */
+    public AState getStateAt(int index)
     {
-        ArrayList<AState> sorted =new ArrayList<>();
-        int length=this.possibleNextStates.size();
-        int max=-1;
-        AState maxState=null;
-        for (int i=0; i<length;i++)
-        {
-            maxState=null;
-            max=-1;
-            for(int j=0;j<length-i;j++)
-            {
-                if(possibleNextStates.get(j).priority>max)
-                {max=possibleNextStates.get(j).priority;
-                maxState=possibleNextStates.get(j);}
+        return this.possibleNextStates.get(index);
+    }
+
+    /**
+     * This function wll return the size of the list (The number of possible moves)
+     * @return - The umber of possible moves
+     */
+    public int getNumberOfPossibleMoves()
+    {
+        return this.possibleNextStates.size();
+    }
+    /**
+     * This function will sort the list of possible moves using the priority as a key to compare between to states
+     * Notice that this list will be sorted as such: The state with the maximum priority will be the first node
+     * the state with the minimum priority will be at the end of the list
+     * We used Selection Sort
+     */
+    public void sortByPriority() {
+        //The sorted list to be
+        ArrayList<AState> sorted = new ArrayList<>();
+        int length = this.possibleNextStates.size();
+
+        //The maximum priority
+        int max;
+        //The state with the maximum priority
+        AState maxState;
+
+        for (int i = 0; i < length; i++) {
+            maxState = null;
+            max = -1;
+            for (int j = 0; j < length - i; j++) {
+                if (possibleNextStates.get(j).priority > max) {
+                    max = possibleNextStates.get(j).priority;
+                    maxState = possibleNextStates.get(j);
+                }
 
             }
             this.possibleNextStates.remove(maxState);
             sorted.add(maxState);
         }
-        this.possibleNextStates=sorted;
+        this.possibleNextStates = sorted;
 
     }
 
