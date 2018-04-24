@@ -49,6 +49,8 @@ public class Maze {
         return new Position(goal.GetColumnIndex(),goal.GetRowIndex());
     }
 
+
+
     /**
      * This function will print the maze
      */

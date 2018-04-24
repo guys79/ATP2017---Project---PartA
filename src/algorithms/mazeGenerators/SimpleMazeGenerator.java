@@ -18,33 +18,32 @@ public class SimpleMazeGenerator extends AMazeGenerator {
      * @return - The new position
      */
     private Position getStartEndPositions(int column, int row){
-        int rowOrColumn = (int )(Math.random() * 2 + 1);
-        Position p;
-        //this is in case that the row of the position is in the most up place in maze or in the most down place in the maze
-        if(rowOrColumn==1){
-            int myColumn = (int )(Math.random() * column);
-            //this is in case that the row of the position is in the most up place in the maze
-            if((int )(Math.random() * 2 + 1)==1){
-                p=new Position(myColumn,0);
-            }
-            //this is in case that the row of the position is in the most left place in the maze
-            else{
-                p=new Position(myColumn,row-1);
+       int col= (int )(Math.random() * column);
+       int row2= (int )(Math.random() * row);
+     return new Position(row2, col);
+    }
+    //this function make pass from the start position to the goal position by putting 2's in this way that will be 0's latter
+    private void createMazeHelper(Position start,Position goal,int[][] myMaze){
+        //we go all the way down by putting 2's from the row of start to the row of goal
+        int SubtractionRows= (start.GetRowIndex()-goal.GetRowIndex())*-1;
+        for(int i=0;i<SubtractionRows;i++){
+            myMaze[start.GetRowIndex()+i+1][start.GetColumnIndex()]=2;
+        }
+        int SubtractionCol;
+        //we go all the way left by putting 2's from the column of start to the column of goal
+        if(start.GetColumnIndex()>goal.GetColumnIndex()) {
+            SubtractionCol = start.GetColumnIndex() - goal.GetColumnIndex();
+            for (int i = 0; i < SubtractionCol; i++) {
+                myMaze[goal.GetRowIndex()][start.GetColumnIndex() - i - 1] = 2;
             }
         }
-        //this is in case that the column of the position is in the most left place in maze or in the most right place in the maze
+        //we go all the way by putting 2's from the column of start to the column of goal
         else{
-            int myRow = (int )(Math.random() * row);
-            //this is in case that the column of the position is in the most left place in the maze
-            if((int )(Math.random() * 2 + 1)==1){
-                p=new Position(0,myRow);
-            }
-            //this is in case that the column of the position is in the most right place in the maze
-            else{
-                p=new Position(column-1,myRow);
+            SubtractionCol= (start.GetColumnIndex()-goal.GetColumnIndex())*-1;
+            for(int i=0;i<SubtractionCol;i++){
+                myMaze[goal.GetRowIndex()][start.GetColumnIndex()+i+1]=2;
             }
         }
-        return p;
     }
 
     /**
@@ -56,8 +55,9 @@ public class SimpleMazeGenerator extends AMazeGenerator {
      * @param myMaze - The array that represent the binary maze
      * @return - The corrected maze
      */
-    private int[][] makePass(Position start,Position goal, int column, int row, int[][] myMaze){
+    private void makePass(Position start,Position goal, int column, int row, int[][] myMaze){
         //we make the start and goal positions as positions that you can pass through
+        /*
         myMaze[start.GetRowIndex()][start.GetColumnIndex()]=0;
         myMaze[goal.GetRowIndex()][goal.GetColumnIndex()]=0;
         boolean found=false;
@@ -95,6 +95,15 @@ public class SimpleMazeGenerator extends AMazeGenerator {
             }
         }
         return myMaze;
+         */
+        //this is in case that the hier position is the goal
+           if(start.GetRowIndex()>goal.GetRowIndex()){
+               createMazeHelper(goal,start,myMaze);
+           }
+           //this is in case that the hier position is the start
+           else{
+               createMazeHelper(start,goal,myMaze);
+           }
     }
 
     /**
@@ -109,7 +118,9 @@ public class SimpleMazeGenerator extends AMazeGenerator {
         Position goal= getStartEndPositions(column,row);
         //we make shore the positions are different
         while(goal.GetColumnIndex()==start.GetColumnIndex()&&start.GetRowIndex()==goal.GetRowIndex()){
+           // System.out.println(goal.GetColumnIndex() +" , "+goal.GetRowIndex());
             goal=getStartEndPositions(column,row);
+
         }
 
         //we initialize the maze with walls only
@@ -122,7 +133,7 @@ public class SimpleMazeGenerator extends AMazeGenerator {
         }
 
         //we make a pass through the maze
-        myMaze=makePass(start,goal,column,row,myMaze);
+        makePass(start,goal,column,row,myMaze);
 
         //we put randomly places that you can go through
         for (int i = 0; i < row; i++) {
@@ -134,6 +145,15 @@ public class SimpleMazeGenerator extends AMazeGenerator {
                 }
             }
         }
+        //we transform all the 2's to 0's
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                if(myMaze[i][j]==2){
+                    myMaze[i][j]=0;
+                }
+            }
+        }
+
         //we return the maze
         return new Maze(myMaze,start,goal);
     }
