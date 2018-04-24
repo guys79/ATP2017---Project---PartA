@@ -1,25 +1,32 @@
 package algorithms.search;
 
 import java.util.ArrayList;
-import java.util.List;
 
+/**
+ * This class represents the solution to the puzzle
+ */
 public class Solution {
-/*
-    public Solution(){
 
+    private ArrayList<AState> sol;//The solution
+
+    /**
+     * The constructor
+     * @param sol - The solution
+     */
+    public Solution(ArrayList<AState> sol){
+
+        this.sol=sol;
     }
-    public ArrayList<AState> getSolutionPath(){
-        AState current=goal;
-        ArrayList<AState> opositSol= new ArrayList<>();
-        while(current!=null){
-            opositSol.add(current);
-            current=current.predesesor;
-        }
-        List<AState> sol= new ArrayList<>();
-        for(int i=sol.size()-1;i>=0;i--){
-            sol.add(opositSol.get(i));
-        }
-        return sol;
+
+    /**
+     * This function returns the solution path (Deep  Copy)
+     * @return - The solution path
+     */
+    public ArrayList<AState> getSolutionPath()
+    {
+        //return new ArrayList<>(this.sol);
+        return  sol;
     }
-    */
+
+
 }
