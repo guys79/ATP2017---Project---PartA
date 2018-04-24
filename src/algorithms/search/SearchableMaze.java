@@ -1,6 +1,6 @@
 package algorithms.search;
 import algorithms.mazeGenerators.*;
-
+//
 public class SearchableMaze implements ISearchable {
     SearchableMaze(Maze maze) {
         MazeState[][]
