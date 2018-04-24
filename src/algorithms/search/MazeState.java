@@ -17,6 +17,12 @@ public class MazeState extends AState {
         current=curr;
 
     }
+    public MazeState(Position curr, int priority)
+    {
+        super(priority);
+        current=curr;
+
+    }
 
     /**
      * This function will return the current position of the player in the maze

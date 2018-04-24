@@ -25,7 +25,12 @@ public abstract class AState {
         possibleNextStates = new ArrayList<>();
         predecessor=null;
     }
-
+    /**
+     * The constructor, ww will set the priority to -1
+     */
+    protected AState() {
+        this(-1);
+    }
 
     /**
      * This function will set the predecessor
@@ -44,12 +49,7 @@ public abstract class AState {
     {
         return  this.predecessor;
     }
-    /**
-     * The constructor, ww will set the priority to -1
-     */
-    protected AState() {
-        this(-1);
-    }
+
 
     /**
      * This function will return the priority of this state

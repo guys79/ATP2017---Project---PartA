@@ -48,8 +48,19 @@ public class Maze {
     public Position getGoalPosition(){
         return new Position(goal.GetColumnIndex(),goal.GetRowIndex());
     }
-
-
+    //this function will return if there is a pass in a certain position
+    public boolean ifThereIsAPass(int row,int column){
+        if(maze[row][column]==1){
+            return true;
+        }
+        return false;
+    }
+    public int getNumOfRows(){
+        return maze.length;
+    }
+    public int getNumOfColumns(){
+        return maze[0].length;
+    }
 
     /**
      * This function will print the maze
