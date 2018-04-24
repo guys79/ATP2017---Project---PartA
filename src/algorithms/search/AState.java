@@ -51,9 +51,26 @@ public abstract class AState {
     }
     public void sortByPriority()
     {
-        /*
-        Sort the list!
-         */ 
+        ArrayList<AState> sorted =new ArrayList<>();
+        int length=this.possibleNextStates.size();
+        int max=-1;
+        AState maxState=null;
+        for (int i=0; i<length;i++)
+        {
+            maxState=null;
+            max=-1;
+            for(int j=0;j<length-i;j++)
+            {
+                if(possibleNextStates.get(j).priority>max)
+                {max=possibleNextStates.get(j).priority;
+                maxState=possibleNextStates.get(j);}
+
+            }
+            this.possibleNextStates.remove(maxState);
+            sorted.add(maxState);
+        }
+        this.possibleNextStates=sorted;
+
     }
 
 
