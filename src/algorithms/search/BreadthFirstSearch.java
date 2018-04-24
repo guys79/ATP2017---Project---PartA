@@ -25,6 +25,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
     protected void solve(AState start,AState goal) {
 
         //The list of nodes that are waiting to be scanned
+        //Notice - we will treat it as a queue
         LinkedList<AState> nextToBeEvaluated=new LinkedList<>();
 
         //Adding the start state to the list
@@ -34,16 +35,19 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
         //This boolean variable will hold the value "true" if we have reached our goal
         boolean didWeGetThereYet=false;
 
-        //Untill we scanned the whole graph
+        //Until we scanned the whole graph
         while(nextToBeEvaluated.size()!=0)
         {
 
+            //Dequeue
             scanned=nextToBeEvaluated.removeFirst();
             scanned.visited=true;
             this.numberOfNodesEvaluarted++;
+            //For each possible state
             for (int i=0; i<scanned.getNumberOfPossibleMoves();i++)
             {
-                if(scanned==goal)
+                //If we have found the goal
+                if(scanned.getStateAt(i)==goal)
                 {
                     goal.setPredecessor(scanned);
                     this.numberOfNodesEvaluarted++;
@@ -51,9 +55,13 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
 
                     break;
                 }
+                //If we haven't reached the goal yet
                 if(!didWeGetThereYet) {
+                    //If didn't already visit this node
                     if (!scanned.getStateAt(i).visited) {
+
                         scanned.getStateAt(i).setPredecessor(scanned);
+                        //Enqueue
                         nextToBeEvaluated.addLast(scanned.getStateAt(i));
                     }
                 }

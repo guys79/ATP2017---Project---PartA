@@ -27,10 +27,14 @@ public abstract class ASearchingAlgorithm implements  ISearchingAlgorithm{
         //Getting the start and end states
         AState start=iSearchable.getStartState();
         AState goal = iSearchable.getGoalState();
-
+        if(goal==start) {
+            ArrayList<AState>single=new ArrayList<>();
+            single.add(goal);
+            return new Solution(single);
+        }
         //solve the puzzle
         solve(start,goal);
-
+        //System.out.println("11111");
         //The list of states that will be a part of the solution
         ArrayList<AState> sol=new ArrayList<>();
         //The goal is obviously a part of the solution
@@ -41,9 +45,11 @@ public abstract class ASearchingAlgorithm implements  ISearchingAlgorithm{
         {
           sol.add(0,partOfTheSolution);
           partOfTheSolution=partOfTheSolution.getPredecessor();
+          //System.out.println(partOfTheSolution);
         }
         //Creating the solution
         Solution solution=new Solution(sol);
+
         return solution;
     }
 
