@@ -22,21 +22,24 @@ public class SimpleMazeGenerator extends AMazeGenerator {
        int row2= (int )(Math.random() * row);
      return new Position(row2, col);
     }
-
+    //this function make pass from the start position to the goal position by putting 2's in this way that will be 0's latter
     private void createMazeHelper(Position start,Position goal,int[][] myMaze){
-        int SubtractionRows= (start.GetRowIndex()-goal.GetRowIndex());
+        //we go all the way down by putting 2's from the row of start to the row of goal
+        int SubtractionRows= (start.GetRowIndex()-goal.GetRowIndex())*-1;
         for(int i=0;i<SubtractionRows;i++){
             myMaze[start.GetRowIndex()+i+1][start.GetColumnIndex()]=2;
         }
         int SubtractionCol;
+        //we go all the way left by putting 2's from the column of start to the column of goal
         if(start.GetColumnIndex()>goal.GetColumnIndex()) {
-            SubtractionCol = start.GetRowIndex() - goal.GetRowIndex();
+            SubtractionCol = start.GetColumnIndex() - goal.GetColumnIndex();
             for (int i = 0; i < SubtractionCol; i++) {
                 myMaze[goal.GetRowIndex()][start.GetColumnIndex() - i - 1] = 2;
             }
         }
+        //we go all the way by putting 2's from the column of start to the column of goal
         else{
-            SubtractionCol= (start.GetRowIndex()-goal.GetRowIndex())*-1;
+            SubtractionCol= (start.GetColumnIndex()-goal.GetColumnIndex())*-1;
             for(int i=0;i<SubtractionCol;i++){
                 myMaze[goal.GetRowIndex()][start.GetColumnIndex()+i+1]=2;
             }
@@ -93,11 +96,13 @@ public class SimpleMazeGenerator extends AMazeGenerator {
         }
         return myMaze;
          */
+        //this is in case that the hier position is the goal
            if(start.GetRowIndex()>goal.GetRowIndex()){
-               createMazeHelper(start,goal,myMaze);
-           }
-           else{
                createMazeHelper(goal,start,myMaze);
+           }
+           //this is in case that the hier position is the start
+           else{
+               createMazeHelper(start,goal,myMaze);
            }
     }
 
@@ -140,7 +145,7 @@ public class SimpleMazeGenerator extends AMazeGenerator {
                 }
             }
         }
-        /*
+        //we transform all the 2's to 0's
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
                 if(myMaze[i][j]==2){
@@ -148,7 +153,7 @@ public class SimpleMazeGenerator extends AMazeGenerator {
                 }
             }
         }
-        */
+
         //we return the maze
         return new Maze(myMaze,start,goal);
     }
