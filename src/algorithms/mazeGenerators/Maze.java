@@ -60,12 +60,12 @@ public class Maze {
         for(int i=0; i<row;i++){
             for(int j=0;j<column;j++){
                 //we check if the current square is the start position
-                if(column==start.GetColumnIndex()&&row==start.GetRowIndex()){
+                if(j==start.GetColumnIndex()&&i==start.GetRowIndex()){
                     System.out.print("S");
                 }
                 else {
                     //we check if the current square is the goal position
-                    if(column==goal.GetColumnIndex()&&row==goal.GetRowIndex()){
+                    if(j==goal.GetColumnIndex()&&i==goal.GetRowIndex()){
                         System.out.print("E");
                     }
                     //if it is not the start or end position we print it as it is(wall or a pass)

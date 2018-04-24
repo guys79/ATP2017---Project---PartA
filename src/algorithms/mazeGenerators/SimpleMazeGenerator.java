@@ -124,7 +124,7 @@ public class SimpleMazeGenerator extends AMazeGenerator {
         //we make a pass through the maze
         myMaze=makePass(start,goal,column,row,myMaze);
 
-        //we put randomely places that you can go through
+        //we put randomly places that you can go through
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
                 if(myMaze[i][j]==1){

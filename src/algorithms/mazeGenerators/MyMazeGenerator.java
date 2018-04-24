@@ -30,7 +30,7 @@ public class MyMazeGenerator extends AMazeGenerator {
         //The cell above
         if(row>0 && (array[row-1][col]==0||array[row-1][col]==2))
             count++;
-        //The cellon the lest
+        //The cell on the lest
         if(col>0 && (array[row][col-1]==0||array[row][col-1]==2))
             count++;
         //The cell below
@@ -46,8 +46,9 @@ public class MyMazeGenerator extends AMazeGenerator {
      * This function will choose a random cell in the list, and will check the adjacent cells
      * @param nodes - The list of cells
      * @param array - The array
+     * @param emptySlots - The list of emptySlots
      */
-    private void handleCurrentPosition(List<Position>nodes, int [][]array)
+    private void handleCurrentPosition(List<Position>nodes, int [][]array,List<Position>emptySlots)
     {
         //The size of the list
         int size = nodes.size();
@@ -55,6 +56,8 @@ public class MyMazeGenerator extends AMazeGenerator {
         int index = (int) (size * Math.random());
         //The node in that index
         Position curr = nodes.get(index);
+        //Updating the empty slots
+        emptySlots.add(curr);
         //Removing the node from the list
         nodes.remove(index);
         array[curr.GetRowIndex()][curr.GetColumnIndex()] = 0;
@@ -87,11 +90,11 @@ public class MyMazeGenerator extends AMazeGenerator {
      *
      * @param array - The array the we receive
      * @param start - The position of the start
-     * @param goal - The position of the goal
+     * @return - The goal position
      */
 
 
-    private void settingArrayUsingPrim(int[][] array, Position start, Position goal) {
+    private Position settingArrayUsingPrim(int[][] array, Position start) {
         List<Position> nodes = new ArrayList<>();
         nodes.add(start);
 
@@ -103,19 +106,32 @@ public class MyMazeGenerator extends AMazeGenerator {
         }
         array[start.GetRowIndex()][start.GetColumnIndex()] = 0;
 
-
+        List<Position> emptySlots = new ArrayList<>();
         //Updating the cells in the array iteratively in order to create the maze
         while (nodes.size() != 0) {
-            handleCurrentPosition(nodes,array);
+            handleCurrentPosition(nodes,array,emptySlots);
         }
-        //The goal
-        array[goal.GetRowIndex()][goal.GetColumnIndex()] = 0;
 
 
+        //Choosing the goal
+        //The size of the list
+        int size = emptySlots.size();
+        //A random index
+        int index = (int) (size * Math.random());
+        //The node in that index
+        Position curr = emptySlots.get(index);
+        while(curr.GetRowIndex()==start.GetRowIndex()&&curr.GetColumnIndex()==start.GetColumnIndex())
+        {
+            emptySlots.remove(curr);
+            size--;
+            index = (int) (size * Math.random());
+            curr= emptySlots.get(index);
+        }
+        return curr;
     }
 
     /**
-     * This funcrtion will generate a new maze using Prim's algorithm
+     * This function will generate a new maze using Prim's algorithm
      * @param row - The number of rows
      * @param column - The number of columns
      * @return - This function will return a new random binary maze
@@ -126,20 +142,12 @@ public class MyMazeGenerator extends AMazeGenerator {
         //The start index
         int startRow=(int)(Math.random()*row);
         int startCol=(int)(Math.random()*column);
-        //The goal index
-        int goalRow=startRow;
-        int goalCol=startCol;
-        //Setting the goal's index to be different from the start's index
-        while(goalCol==startCol && goalRow== goalCol)
-        {
-            goalRow=(int)(Math.random()*row);
-            goalCol=(int)(Math.random()*column);
-        }
+
         //Creating the position for both start and goal
         Position start=new Position(startRow,startCol);
-        Position goal=new Position(goalRow,goalCol);
-        //Creating the binary maze (The array of zero's and one's)
-        settingArrayUsingPrim(array,start,goal);
+
+        //Creating the binary maze (The array of zero's and one's) and getting the goal position
+        Position goal =settingArrayUsingPrim(array,start);
         //Creating the ne maze
         Maze maze =new Maze(array,start,goal);
         return maze;
