@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Solution {
-
+/*
     public Solution(){
 
     }
@@ -21,4 +21,5 @@ public class Solution {
         }
         return sol;
     }
+    */
 }
