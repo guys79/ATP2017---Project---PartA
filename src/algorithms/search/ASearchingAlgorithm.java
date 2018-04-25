@@ -7,15 +7,22 @@ import java.util.ArrayList;
  */
 public abstract class ASearchingAlgorithm implements  ISearchingAlgorithm{
 
-    protected int numberOfNodesEvaluarted;//The number of nodes evaluated in the search
+    protected int numberOfNodesEvaluated;//The number of nodes evaluated in the search
 
+    /**
+     * The constructor
+     */
+    protected  ASearchingAlgorithm()
+    {
+        this.numberOfNodesEvaluated=0;
+    }
     /**
      * This function returns the number of nodes that were evaluated during the search
      * @return - The number of nodes that were evaluated during the search
      */
     public int getNumOfNodesEvaluated()
     {
-        return numberOfNodesEvaluarted;
+        return numberOfNodesEvaluated;
     }
 
     /**
@@ -27,14 +34,16 @@ public abstract class ASearchingAlgorithm implements  ISearchingAlgorithm{
         //Getting the start and end states
         AState start=iSearchable.getStartState();
         AState goal = iSearchable.getGoalState();
+        this.numberOfNodesEvaluated=0;
         if(goal==start) {
             ArrayList<AState>single=new ArrayList<>();
             single.add(goal);
+            this.numberOfNodesEvaluated=1;
             return new Solution(single);
         }
         //solve the puzzle
         solve(start,goal);
-        //System.out.println("11111");
+
         //The list of states that will be a part of the solution
         ArrayList<AState> sol=new ArrayList<>();
         //The goal is obviously a part of the solution

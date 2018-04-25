@@ -59,8 +59,8 @@ public class RunSearchOnMaze {
         i.addPossilbleState(f);
         i.addPossilbleState(c);
 
-        BestFirstSearch breadthFirstSearch = new BestFirstSearch();
-
+        //BestFirstSearch breadthFirstSearch = new BestFirstSearch();
+        BreadthFirstSearch breadthFirstSearch=new BreadthFirstSearch();
         SearchableMaze searchableMaze=new SearchableMaze(a,h);
         //System.out.println("1");
       /*  System.out.println("a= "+a);
@@ -73,7 +73,7 @@ public class RunSearchOnMaze {
         System.out.println("h= "+h);
         System.out.println("i= "+i);*/
         Solution sol=breadthFirstSearch.solve(searchableMaze);
-        System.out.println(sol.getSolutionPath().size());
+        //System.out.println(sol.getSolutionPath().size());
         System.out.println(sol.getSolutionPath().get(0)==a);
         System.out.println(sol.getSolutionPath().get(1)==b);
         System.out.println(sol.getSolutionPath().get(2)==d);
