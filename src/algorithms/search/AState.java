@@ -6,13 +6,28 @@ import java.util.List;
 /**
  * This class represents a state in a puzzle
  */
-public abstract class AState {
+public abstract class AState implements Comparable{
 
     public boolean visited;//Have we been in this state already
     private int priority;//The priority of this state
     protected ArrayList<AState> possibleNextStates;//The possible moves
     private AState predecessor;
 
+
+    /**
+     * This function will compare to AStates using the priority
+     * @param o - The object
+     * @return - A negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object.
+     */
+    @Override
+    public int compareTo(Object o) {
+        if(o instanceof AState)
+        {
+            AState aState=(AState)o;
+            return aState.priority-this.priority;
+        }
+        throw new IllegalArgumentException("The given object is not a state");
+    }
 
     /**
      * The constructor
@@ -60,6 +75,14 @@ public abstract class AState {
         return priority;
     }
 
+    /**
+     * This function will set a state's priority
+     * @param priority - The given priority
+     */
+    public void setPriority(int priority)
+    {
+        this.priority=priority;
+    }
     /**
      * This function will add a state to the possible states list
      *

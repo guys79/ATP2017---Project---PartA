@@ -2,7 +2,7 @@ package algorithms.search;
 import algorithms.mazeGenerators.*;
 //
 public class SearchableMaze implements ISearchable {
-    SearchableMaze(Maze maze) {
+    /*public SearchableMaze(Maze maze) {
         MazeState[][]
         for (int i = 0; i < maze.getNumOfRows()) {
             for (int j = 0; j < maze.getNumOfColumns()) {
@@ -20,5 +20,20 @@ public class SearchableMaze implements ISearchable {
                 }
             }
         }
+    }*/
+    private AState start,goal;
+    public SearchableMaze(AState start, AState goal)
+    {
+        this.goal=goal;
+        this.start=start;
+
+    }
+    public AState getStartState()
+    {
+        return this.start;
+    }
+    public AState getGoalState()
+    {
+        return this.goal;
     }
 }

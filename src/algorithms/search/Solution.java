@@ -24,9 +24,10 @@ public class Solution {
      */
     public ArrayList<AState> getSolutionPath()
     {
-        //return new ArrayList<>(this.sol);
-        return  sol;
+        return new ArrayList<>(this.sol);
+
     }
+
 
 
 }

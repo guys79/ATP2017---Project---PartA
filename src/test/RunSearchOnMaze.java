@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 
 public class RunSearchOnMaze {
-    /*
+
     public static void main(String[] args) {
         AState a=new MazeState(new Position(1,1));
         AState b=new MazeState(new Position(1,1));
@@ -59,18 +59,28 @@ public class RunSearchOnMaze {
         i.addPossilbleState(f);
         i.addPossilbleState(c);
 
-        BreadthFirstSearch breadthFirstSearch = new BreadthFirstSearch();
+        BestFirstSearch breadthFirstSearch = new BestFirstSearch();
 
-        SearchableMaze searchableMaze=new SearchableMaze(h,h);
+        SearchableMaze searchableMaze=new SearchableMaze(a,h);
         //System.out.println("1");
+      /*  System.out.println("a= "+a);
+        System.out.println("b= "+b);
+        System.out.println("c= "+c);
+        System.out.println("d= "+d);
+        System.out.println("e= "+e);
+        System.out.println("f= "+f);
+        System.out.println("g= "+g);
+        System.out.println("h= "+h);
+        System.out.println("i= "+i);*/
         Solution sol=breadthFirstSearch.solve(searchableMaze);
-        //System.out.println("2");
-        System.out.println(sol.getSolutionPath().get(0)==h);
-        //System.out.println(sol.getSolutionPath().get(1)==h);
-        //System.out.println(sol.getSolutionPath().get(2)==d);
-        //System.out.println(sol.getSolutionPath().get(3)==h);
+        System.out.println(sol.getSolutionPath().size());
+        System.out.println(sol.getSolutionPath().get(0)==a);
+        System.out.println(sol.getSolutionPath().get(1)==b);
+        System.out.println(sol.getSolutionPath().get(2)==d);
+        System.out.println(sol.getSolutionPath().get(3)==h);
+        System.out.println(breadthFirstSearch.getNumOfNodesEvaluated());
 
-    }*/
+    }
 
     /*    IMazeGenerator mg = new MyMazeGenerator();
         Maze maze = mg.generate(30, 30);

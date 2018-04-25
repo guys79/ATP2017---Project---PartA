@@ -5,6 +5,10 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
+/**
+ * This class describes the Breadth First Search algorithm
+ */
+
 public class BreadthFirstSearch extends ASearchingAlgorithm {
 
     /**
@@ -34,18 +38,24 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
         AState scanned;
         //This boolean variable will hold the value "true" if we have reached our goal
         boolean didWeGetThereYet=false;
-
+int count=0;
+        start.visited=true;
         //Until we scanned the whole graph
         while(nextToBeEvaluated.size()!=0)
         {
+            count++;
+
+
 
             //Dequeue
             scanned=nextToBeEvaluated.removeFirst();
-            scanned.visited=true;
+
             this.numberOfNodesEvaluarted++;
             //For each possible state
             for (int i=0; i<scanned.getNumberOfPossibleMoves();i++)
             {
+
+
                 //If we have found the goal
                 if(scanned.getStateAt(i)==goal)
                 {
@@ -61,10 +71,12 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
                     if (!scanned.getStateAt(i).visited) {
 
                         scanned.getStateAt(i).setPredecessor(scanned);
+                        scanned.getStateAt(i).visited=true;
                         //Enqueue
                         nextToBeEvaluated.addLast(scanned.getStateAt(i));
                     }
                 }
+
 
             }
             if(didWeGetThereYet)
