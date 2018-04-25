@@ -79,7 +79,8 @@ public class RunSearchOnMaze {
         System.out.println(sol.getSolutionPath().get(2)==d);
         System.out.println(sol.getSolutionPath().get(3)==h);
         System.out.println(breadthFirstSearch.getNumOfNodesEvaluated());
-
+        MazeState mazeStatez=new MazeState(new Position(4,5));
+        System.out.println(mazeStatez);
     }
 
     /*    IMazeGenerator mg = new MyMazeGenerator();

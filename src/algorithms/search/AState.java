@@ -12,6 +12,7 @@ public abstract class AState implements Comparable{
     private int priority;//The priority of this state
     protected ArrayList<AState> possibleNextStates;//The possible moves
     private AState predecessor;
+    protected String stateToString;
 
 
     /**
@@ -39,6 +40,7 @@ public abstract class AState implements Comparable{
         this.priority = priority;
         possibleNextStates = new ArrayList<>();
         predecessor=null;
+        this.stateToString="";
     }
     /**
      * The constructor, ww will set the priority to -1
@@ -54,6 +56,15 @@ public abstract class AState implements Comparable{
     public void setPredecessor(AState predecessor)
     {
         this.predecessor=predecessor;
+    }
+
+    /**
+     * This function over ride the to string method
+     * @return
+     */
+    public String toString()
+    {
+        return this.stateToString;
     }
 
     /**

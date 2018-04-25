@@ -15,13 +15,14 @@ public class MazeState extends AState {
     {
         super();
         current=curr;
+        this.stateToString="{"+curr.GetRowIndex()+","+curr.GetColumnIndex()+"}";
 
     }
     public MazeState(Position curr, int priority)
     {
         super(priority);
         current=curr;
-
+        this.stateToString="{"+curr.GetRowIndex()+","+curr.GetColumnIndex()+"}";
     }
 
     /**

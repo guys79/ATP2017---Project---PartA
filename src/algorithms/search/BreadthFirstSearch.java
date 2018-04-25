@@ -1,6 +1,4 @@
 package algorithms.search;
-
-
 import java.util.LinkedList;
 
 
@@ -72,7 +70,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
 
                         scanned.getStateAt(i).setPredecessor(scanned);
                         scanned.getStateAt(i).visited=true;
-                        //NWe have scanned another node
+                        //We have scanned another node
                         this.numberOfNodesEvaluated++;
                         //Enqueue
                         nextToBeEvaluated.addLast(scanned.getStateAt(i));
