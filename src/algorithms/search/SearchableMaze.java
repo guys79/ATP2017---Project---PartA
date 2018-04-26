@@ -13,49 +13,50 @@ public class SearchableMaze implements ISearchable {
                     //this is in a case that we have a neighbor that is upper by 1 step from us
                     if(i-1>=0){
                         if(maze[i-1][j]!=null){
-                            maze[i-1][j].addPossilbleState(maze[i-1][j]);
+                            maze[i][j].addPossilbleState(maze[i-1][j]);
+
                         }
                     }
                     //this is in a case that we have a neighbor that is lower by 1 step from us
                     if(i+1<maze.length){
                         if(maze[i+1][j]!=null){
-                            maze[i+1][j].addPossilbleState(maze[i+1][j]);
+                            maze[i][j].addPossilbleState(maze[i+1][j]);
                         }
                     }
                     //this is in a case that we have a neighbor that is left by 1 step from us
                     if(j-1>=0){
                         if(maze[i][j-1]!=null){
-                            maze[i][j-1].addPossilbleState(maze[i][j-1]);
+                            maze[i][j].addPossilbleState(maze[i][j-1]);
                         }
                     }
                     //this is in a case that we have a neighbor that is right by 1 step from us
                     if(j+1<maze[0].length){
                         if(maze[i][j+1]!=null){
-                            maze[i][j+1].addPossilbleState(maze[i][j+1]);
+                            maze[i][j].addPossilbleState(maze[i][j+1]);
                         }
                     }
                     //this is in a case that we have a neighbor that is upper by 1 step from us and left by 1 step from us
                     if(i-1>=0&&j-1>=0){
                         if(maze[i-1][j-1]!=null){
-                            maze[i-1][j-1].addPossilbleState(maze[i-1][j-1]);
+                            maze[i][j].addPossilbleState(maze[i-1][j-1]);
                         }
                     }
                     //this is in a case that we have a neighbor that is lower by 1 step from us and left by 1 step from us
                     if(i+1<maze.length&&j-1>=0){
                         if(maze[i+1][j-1]!=null){
-                            maze[i+1][j-1].addPossilbleState(maze[i+1][j-1]);
+                            maze[i][j].addPossilbleState(maze[i+1][j-1]);
                         }
                     }
                     //this is in a case that we have a neighbor that is lower by 1 step from us and right by 1 step from us
                     if(j+1<maze[0].length&&i+1<maze.length){
                         if(maze[i+1][j+1]!=null){
-                            maze[i+1][j+1].addPossilbleState(maze[i+1][j+1]);
+                            maze[i][j].addPossilbleState(maze[i+1][j+1]);
                         }
                     }
                     //this is in a case that we have a neighbor that is upper by 1 step from us and right by 1 step from us
                     if(j+1<maze[0].length&&i-1>=0){
                         if(maze[i-1][j+1]!=null){
-                            maze[i-1][j+1].addPossilbleState(maze[i-1][j+1]);
+                            maze[i][j].addPossilbleState(maze[i-1][j+1]);
                         }
                     }
                 }
@@ -66,9 +67,6 @@ public class SearchableMaze implements ISearchable {
     public SearchableMaze(Maze maze)
     {
         //we initilize the start and goal
-        this.start=new MazeState(maze.getStartPosition());
-        this.goal= new MazeState(maze.getGoalPosition());
-
         //we initilize the array of mazeStates by nulles
         MazeState[][] mazeOfStates= new MazeState[maze.getNumOfRows()][maze.getNumOfColumns()];
         for (int i = 0; i < maze.getNumOfRows();i++) {
@@ -86,6 +84,8 @@ public class SearchableMaze implements ISearchable {
         }
         //we make the graph(the conection beetwen every two neibhors)
         makeGraph(mazeOfStates);
+        this.start= mazeOfStates[maze.getStartPosition().GetRowIndex()][maze.getStartPosition().GetColumnIndex()];
+        this.goal= mazeOfStates[maze.getGoalPosition().GetRowIndex()][maze.getGoalPosition().GetColumnIndex()];
     }
     public AState getStartState()
     {

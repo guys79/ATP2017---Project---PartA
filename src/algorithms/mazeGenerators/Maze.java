@@ -50,7 +50,7 @@ public class Maze {
     }
     //this function will return if there is a pass in a certain position
     public boolean ifThereIsAPass(int row,int column){
-        if(maze[row][column]==1){
+        if(maze[row][column]==0){
             return true;
         }
         return false;

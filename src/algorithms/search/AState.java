@@ -76,7 +76,6 @@ public abstract class AState implements Comparable{
         return  this.predecessor;
     }
 
-
     /**
      * This function will return the priority of this state
      *
