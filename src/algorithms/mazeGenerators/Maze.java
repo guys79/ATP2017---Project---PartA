@@ -39,14 +39,14 @@ public class Maze {
      * @return - will return the starting position (deep copy)
      */
     public Position getStartPosition(){
-        return new Position(start.GetColumnIndex(),start.GetRowIndex());
+        return new Position(start.GetRowIndex(),start.GetColumnIndex());
     }
     /**
      * This function will return the goal's position (deep copy)
      * @return - will return the goal's position (deep copy)
      */
     public Position getGoalPosition(){
-        return new Position(goal.GetColumnIndex(),goal.GetRowIndex());
+        return new Position(goal.GetRowIndex(),goal.GetColumnIndex());
     }
     //this function will return if there is a pass in a certain position
     public boolean ifThereIsAPass(int row,int column){
