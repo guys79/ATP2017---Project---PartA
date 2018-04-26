@@ -131,7 +131,8 @@ public class SimpleMazeGenerator extends AMazeGenerator {
                 //System.out.print(j+i*column);
             }
         }
-
+        myMaze[start.GetRowIndex()][start.GetColumnIndex()]=0;
+        myMaze[goal.GetRowIndex()][goal.GetColumnIndex()]=0;
         //we make a pass through the maze
         makePass(start,goal,column,row,myMaze);
 
