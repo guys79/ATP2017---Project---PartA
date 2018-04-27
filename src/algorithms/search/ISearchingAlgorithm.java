@@ -22,7 +22,7 @@ public interface ISearchingAlgorithm {
      * This function will return the number of nodes evaluated in the search
      * @return - return the number of nodes evaluated in the search
      */
-    public int getNumOfNodesEvaluated();
+    public int getNumberOfNodesEvaluated();
 
 }
 

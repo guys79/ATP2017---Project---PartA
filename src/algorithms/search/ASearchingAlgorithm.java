@@ -20,7 +20,7 @@ public abstract class ASearchingAlgorithm implements  ISearchingAlgorithm{
      * This function returns the number of nodes that were evaluated during the search
      * @return - The number of nodes that were evaluated during the search
      */
-    public int getNumOfNodesEvaluated()
+    public int getNumberOfNodesEvaluated()
     {
         return numberOfNodesEvaluated;
     }
