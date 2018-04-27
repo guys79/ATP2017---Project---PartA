@@ -73,7 +73,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
                         //We have scanned another node
                         this.numberOfNodesEvaluated++;
                         //Enqueue
-                        nextToBeEvaluated.addLast(scanned.getStateAt(i));
+                        addToList(nextToBeEvaluated,scanned.getStateAt(i));
                     }
                 }
 
@@ -85,5 +85,8 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
         }
 
 
+    }
+    protected void addToList(LinkedList<AState> listOfStates, AState aState) {
+        listOfStates.addLast(aState);
     }
 }

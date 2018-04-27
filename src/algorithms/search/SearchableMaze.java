@@ -87,6 +87,12 @@ public class SearchableMaze implements ISearchable {
         this.start= mazeOfStates[maze.getStartPosition().GetRowIndex()][maze.getStartPosition().GetColumnIndex()];
         this.goal= mazeOfStates[maze.getGoalPosition().GetRowIndex()][maze.getGoalPosition().GetColumnIndex()];
     }
+    public SearchableMaze(AState start,AState end)
+    {
+        this.start=start;
+        this.goal=end;
+
+    }
     public AState getStartState()
     {
         return this.start;
