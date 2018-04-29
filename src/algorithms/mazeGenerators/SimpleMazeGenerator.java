@@ -63,45 +63,7 @@ public class SimpleMazeGenerator extends AMazeGenerator {
      */
     private void makePass(Position start,Position goal, int column, int row, int[][] myMaze){
         //we make the start and goal positions as positions that you can pass through
-        /*
-        myMaze[start.GetRowIndex()][start.GetColumnIndex()]=0;
-        myMaze[goal.GetRowIndex()][goal.GetColumnIndex()]=0;
-        boolean found=false;
-        int random=(int )(Math.random() * 4);
-        int myRow= start.GetRowIndex();
-        int myColumn=start.GetColumnIndex();
-        //we start to make our way from the start position to the goal position
-        while(!found) {
-            //the random variable tells us where to go
-            random = (int) (Math.random() * 4);
-            //if we cant move to the place that the random variable told us to go to we take other random variable
-            while (random == 0 && myRow == 0 || random == 1 && myRow == row - 1 || random == 2 && myColumn == 0 || random == 3 && myColumn == column - 1) {
-                random = (int) (Math.random() * 4);
-            }
-            //if the random variable is 0 we go up
-            if (random == 0) {
-                myRow = myRow - 1;
-            }
-            //if the random variable is 1 we go down
-            if (random == 1) {
-                myRow = myRow + 1;
-            }
-            //if the random variable is 2 we go left
-            if (random == 2) {
-                myColumn = myColumn - 1;
-            }
-            //if the random variable is 3 we go right
-            if (random == 3) {
-                myColumn = myColumn + 1;
-            }
-            //wherever we go we mark this place as position that we can go through
-            myMaze[myRow][myColumn] = 0;
-            if (myRow == goal.GetRowIndex() && myColumn == goal.GetColumnIndex()) {
-                found = true;
-            }
-        }
-        return myMaze;
-         */
+
         //this is in case that the hier position is the goal
            if(start.GetRowIndex()>goal.GetRowIndex()){
                createMazeHelper(goal,start,myMaze);

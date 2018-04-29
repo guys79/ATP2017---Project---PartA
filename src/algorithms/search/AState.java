@@ -11,8 +11,8 @@ public abstract class AState implements Comparable{
     public boolean visited;//Have we been in this state already
     private int priority;//The priority of this state
     protected ArrayList<AState> possibleNextStates;//The possible moves
-    private AState predecessor;
-    protected String stateToString;
+    private AState predecessor;//The predecessor in the scan
+    protected String stateToString;//The "tostring" of the state
 
     /**
      * The constructor

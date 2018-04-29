@@ -86,6 +86,12 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
 
 
     }
+
+    /**
+     * This function will add the state to the priority queue
+     * @param listOfStates - The list
+     * @param aState - The gicen state
+     */
     protected void addToList(LinkedList<AState> listOfStates, AState aState) {
         listOfStates.addLast(aState);
     }
