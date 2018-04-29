@@ -17,7 +17,8 @@ public class Maze {
      * @param start - The starting position
      * @param goal - The goal
      */
-    public  Maze(int[][] maze,Position start,Position goal){
+    //private  Maze(int[][] maze,Position start,Position goal){
+    public Maze(int[][] maze,Position start,Position goal){
         this.start=start;
         this.goal=goal;
         //we take the length of the rows and columns in order to do deep coppy

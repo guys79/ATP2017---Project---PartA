@@ -14,6 +14,18 @@ public abstract class AState implements Comparable{
     private AState predecessor;
     protected String stateToString;
 
+    /**
+     * The constructor
+     *
+     * @param priority - The priority of this state
+     */
+    protected AState(int priority) {
+        visited = false;
+        this.priority = priority;
+        possibleNextStates = new ArrayList<>();
+        predecessor=null;
+        this.stateToString="";
+    }
 
     /**
      * This function will compare to AStates using the priority
@@ -31,17 +43,14 @@ public abstract class AState implements Comparable{
     }
 
     /**
-     * The constructor
-     *
-     * @param priority - The priority of this state
+     * This function will reset the state to it's original form
      */
-    protected AState(int priority) {
-        visited = false;
-        this.priority = priority;
-        possibleNextStates = new ArrayList<>();
-        predecessor=null;
-        this.stateToString="";
+    public void reset()
+    {
+        this.visited=false;
+        this.predecessor=null;
     }
+
     /**
      * The constructor, ww will set the priority to -1
      */

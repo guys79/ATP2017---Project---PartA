@@ -58,7 +58,7 @@ public abstract class ASearchingAlgorithm implements  ISearchingAlgorithm{
         }
         //Creating the solution
         Solution solution=new Solution(sol);
-
+        iSearchable.reset();
         return solution;
     }
 

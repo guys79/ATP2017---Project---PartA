@@ -137,6 +137,11 @@ public class MyMazeGenerator extends AMazeGenerator {
      * @return - This function will return a new random binary maze
      */
     public Maze generate(int row, int column) {
+        //If the size of the maze is invalid
+        if(row<1 || column<1|| (row==1 && column==1))
+        {
+            return null;
+        }
         //The array
         int [][]array=new int[row][column];
         //The start index

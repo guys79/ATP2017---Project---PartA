@@ -113,6 +113,11 @@ public class SimpleMazeGenerator extends AMazeGenerator {
      * @return - This function will return a new random binary maze
      */
     public Maze generate(int row,int column) {
+        //If the size of the maze is invalid
+        if(row<1 || column<1|| (row==1 && column==1))
+        {
+            return null;
+        }
         //we get a start and goal position
         Position start= getStartEndPositions(column,row);
         Position goal= getStartEndPositions(column,row);

@@ -37,6 +37,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
         //we go over all his neighbors that we didn't visit yet
         for (int i=0;i<curr.getNumberOfPossibleMoves();i++){
             if(!curr.getStateAt(i).visited){
+                this.numberOfNodesEvaluated++;
                 curr.getStateAt(i).setPredecessor(curr);
                 solve(curr.getStateAt(i),goal);
             }
