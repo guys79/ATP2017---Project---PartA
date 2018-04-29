@@ -6,7 +6,7 @@ public class SearchableMaze implements ISearchable {
     private AState start,goal;
     //this function will make the graph out of an array of maze states
     private void makeGraph(MazeState[][] maze){
-        //we go over all the array cheack for every cell if there is a MazeState there and if so we comunicate him with al, his neibhors
+        //we go over all the array check for every cell if there is a MazeState there and if so we comunicate him with al, his neibhors
         for (int i = 0; i < maze.length;i++) {
             for (int j = 0; j < maze[0].length; j++) {
                 if(maze[i][j]!=null){
@@ -66,9 +66,10 @@ public class SearchableMaze implements ISearchable {
 
     public SearchableMaze(Maze maze)
     {
-        //we initilize the start and goal
-        //we initilize the array of mazeStates by nulles
+        //we initialize the start and goal
+
         MazeState[][] mazeOfStates= new MazeState[maze.getNumOfRows()][maze.getNumOfColumns()];
+        //we initialize the array of mazeStates by nulls
         for (int i = 0; i < maze.getNumOfRows();i++) {
             for (int j = 0; j < maze.getNumOfColumns(); j++) {
                 mazeOfStates[i][j]=null;
