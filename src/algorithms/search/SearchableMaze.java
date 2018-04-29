@@ -6,7 +6,11 @@ public class SearchableMaze implements ISearchable {
     private AState start, goal;
     private AState[][] mazeOfStates;
 
-    //this function will make the graph out of an array of maze states
+    /**
+     * this function will make the graph out of an array of maze states
+     * @param maze- a 2d array of states that should simulate all vertices
+     */
+
     private void makeGraph(MazeState[][] maze) {
         //we go over all the array check for every cell if there is a MazeState there and if so we comunicate him with al, his neibhors
         for (int i = 0; i < maze.length; i++) {
@@ -65,7 +69,10 @@ public class SearchableMaze implements ISearchable {
             }
         }
     }
-
+    /**
+     * this is the billder
+     * @param maze- the maze we want to search on
+     */
     public SearchableMaze(Maze maze) {
         if(maze!=null)
         {
@@ -98,21 +105,20 @@ public class SearchableMaze implements ISearchable {
             this.goal = null;
         }
     }
-
-    public SearchableMaze(AState start, AState end) {
-        this.start = start;
-        this.goal = end;
-
-    }
-
+    /**
+     * a getter
+     * @return start
+     */
     public AState getStartState() {
         return this.start;
     }
-
+    /**
+     * a getter
+     * @return goal
+     */
     public AState getGoalState() {
         return this.goal;
     }
-
     /**
      * This function will reset the maze in order to allow multiple scans
      */

@@ -29,7 +29,6 @@ public class SimpleMazeGenerator extends AMazeGenerator {
      * @param goal the goal position
      * @param myMaze the maze I want to make a pass at
      */
-
     private void createMazeHelper(Position start,Position goal,int[][] myMaze){
         //we go all the way down by putting 2's from the row of start to the row of goal
         int SubtractionRows= (start.GetRowIndex()-goal.GetRowIndex())*-1;
