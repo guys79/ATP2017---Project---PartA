@@ -4,7 +4,7 @@ package algorithms.search;
  * This class describes the Depth First Search algorithm
  */
 public class DepthFirstSearch extends ASearchingAlgorithm{
-    AState goal;
+
 
     /**
      * This function will return the name of the searching algorithm
@@ -24,9 +24,8 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
      * @param goal  - The goal state
      */
     protected void solve(AState curr, AState goal) {
-        //we take the current goal
-        this.goal=goal;//
-        //we call the DFS function
+
+
         this.numberOfNodesEvaluated++;
         //we mark the current vertex as visited
         curr.visited=true;

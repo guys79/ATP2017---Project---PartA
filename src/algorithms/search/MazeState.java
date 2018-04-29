@@ -18,6 +18,13 @@ public class MazeState extends AState {
         this.stateToString="{"+curr.GetRowIndex()+","+curr.GetColumnIndex()+"}";
 
     }
+
+    /**
+     *
+     * The constructor
+     * @param curr - The current position of the player in the maze
+     * @param priority - The priority
+     */
     public MazeState(Position curr, int priority)
     {
         super(priority);

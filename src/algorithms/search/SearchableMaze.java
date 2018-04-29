@@ -1,10 +1,10 @@
 package algorithms.search;
 import algorithms.mazeGenerators.*;
-//
+
 public class SearchableMaze implements ISearchable {
 
-    private AState start, goal;
-    private AState[][] mazeOfStates;
+    private AState start, goal;// The start and goal states
+    private AState[][] mazeOfStates;//The maze in "states form"
 
     /**
      * this function will make the graph out of an array of maze states

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class RunSearchOnMaze {
     public static void main(String[] args) {
         IMazeGenerator mg = new MyMazeGenerator();
-        Maze maze = mg.generate(2, 1);
+        Maze maze = mg.generate(20, 10);
         /*int [][]a={
                 {0,0,0,0,0,1,0,1,0,0},
                 {1,1,1,1,0,1,0,1,0,1},

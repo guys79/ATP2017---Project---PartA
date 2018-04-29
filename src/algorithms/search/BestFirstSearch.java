@@ -1,10 +1,8 @@
 package algorithms.search;
 
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.PriorityQueue;
+
 
 /**
  * This class describes the Best First Search algorithm
