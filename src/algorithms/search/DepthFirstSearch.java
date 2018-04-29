@@ -25,7 +25,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
      */
     protected void solve(AState curr, AState goal) {
         //we take the current goal
-        this.goal=goal;
+        this.goal=goal;//
         //we call the DFS function
         this.numberOfNodesEvaluated++;
         //we mark the current vertex as visited
