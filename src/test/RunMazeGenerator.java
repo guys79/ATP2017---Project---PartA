@@ -1,14 +1,24 @@
 package test;
 
 import algorithms.mazeGenerators.*;
+import algorithms.search.DepthFirstSearch;
+import algorithms.search.SearchableMaze;
 
 /**
  * Created by Aviadjo on 3/22/2017.
  */
 public class RunMazeGenerator {
     public static void main(String[] args) {
-        testMazeGenerator(new SimpleMazeGenerator());
-        testMazeGenerator(new MyMazeGenerator());
+        SimpleMazeGenerator s= new SimpleMazeGenerator();
+        Maze maze= s.generate(4,4);
+        DepthFirstSearch d= new DepthFirstSearch();
+        SearchableMaze m= new SearchableMaze(maze);
+        maze.print();
+        d.solve(m);
+        System.out.println(d.getNumberOfNodesEvaluated());
+        System.out.println();
+       // testMazeGenerator(new SimpleMazeGenerator());
+        //testMazeGenerator(new MyMazeGenerator());
     }
 
     private static void testMazeGenerator(IMazeGenerator mazeGenerator) {

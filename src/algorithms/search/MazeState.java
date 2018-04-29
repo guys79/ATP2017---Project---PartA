@@ -18,6 +18,7 @@ public class MazeState extends AState {
         this.stateToString="{"+curr.GetRowIndex()+","+curr.GetColumnIndex()+"}";
 
     }
+
     public MazeState(Position curr, int priority)
     {
         super(priority);
