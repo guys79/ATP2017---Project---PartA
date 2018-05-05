@@ -1,5 +1,7 @@
 package algorithms.mazeGenerators;
 
+import javafx.geometry.Pos;
+
 /**
  * This class represents a position in the maze
  */
@@ -15,6 +17,20 @@ public class Position {
     public Position(int row,int column){
         this.row=row;
         this.column=column;
+    }
+
+    /**
+     * This function will determine whether two positions are equal to each other
+     * @param obj -The other object
+     * @return - True if they are equal and false otherwise
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Position)
+        {
+            return ((Position) obj).row==row&&((Position) obj).column==column;
+        }
+        return false;
     }
 
     /**

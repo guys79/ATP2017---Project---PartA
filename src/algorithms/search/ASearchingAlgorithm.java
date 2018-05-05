@@ -31,6 +31,8 @@ public abstract class ASearchingAlgorithm implements  ISearchingAlgorithm{
      * @return - The solution to the puzzle
      */
     public Solution solve(ISearchable iSearchable) {
+        if (iSearchable!=null)
+        {
         //Getting the start and end states
         AState start=iSearchable.getStartState();
         AState goal = iSearchable.getGoalState();
@@ -59,7 +61,8 @@ public abstract class ASearchingAlgorithm implements  ISearchingAlgorithm{
         //Creating the solution
         Solution solution=new Solution(sol);
         iSearchable.reset();
-        return solution;
+        return solution;}
+        return  null;
     }
 
     /**

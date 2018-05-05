@@ -40,4 +40,17 @@ public class MazeState extends AState {
     {
         return new Position(current);
     }
+
+    /**
+     * This function will determine whether two mazeStates are equal to each other
+     * @param obj -The other object
+     * @return - True if they are equal and false otherwise
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof MazeState) {
+            return super.equals(obj) && ((MazeState)obj).current.equals(current);
+        }
+        return false;
+    }
 }
