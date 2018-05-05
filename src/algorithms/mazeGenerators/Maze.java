@@ -1,7 +1,7 @@
 package algorithms.mazeGenerators;
 
 /**
- * This class represents a maze
+ * This class represents a maze.
  */
 public class Maze {
     //This instance of 2D array will represent our maze
