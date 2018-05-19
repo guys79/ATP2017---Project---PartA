@@ -98,7 +98,7 @@ public class MyCompressorOutPutStream extends OutputStream {
      * This function converts signed binary number into a number (unsigned binary)
      *
      * @param num - The number
-     * @return- The integer
+     * @return- The integer.
      */
     private int FromBinaryToInt(byte num) {
         if (num < 0)
