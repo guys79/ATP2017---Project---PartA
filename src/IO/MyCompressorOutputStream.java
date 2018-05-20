@@ -8,10 +8,10 @@ import java.util.ArrayList;
 /**
  * This class is designed to compress the given data and send it
  */
-public class MyCompressorOutPutStream extends OutputStream {
+public class MyCompressorOutputStream extends OutputStream {
     OutputStream out;//The out put stream
 
-    public MyCompressorOutPutStream(OutputStream out) {
+    public MyCompressorOutputStream(OutputStream out) {
         this.out = out;
     }
 
