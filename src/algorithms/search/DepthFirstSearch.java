@@ -52,7 +52,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
      */
     @Override
     public int getNumberOfNodesEvaluated() {
-        System.out.println("hey");
+
         return super.getNumberOfNodesEvaluated()+1;
     }
 }

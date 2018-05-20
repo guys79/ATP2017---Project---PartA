@@ -57,14 +57,14 @@ public class MyDecompressorInputStream  extends InputStream {
         {
             System.out.println(e.getMessage());
         }
-        print(b);
+
 
 
         //The start of the maze itself in the given array
         int start = FromBinaryToInt(b[0]) + FromBinaryToInt(b[FromBinaryToInt(b[0]) + 1]) + 2;
 
         byte[] tempArray = new byte[b.length];
-        byte current = 0;
+        byte current = 1;
         int index = 0;
 
         int base = Byte.MAX_VALUE + Math.abs(Byte.MIN_VALUE);
@@ -82,11 +82,13 @@ public class MyDecompressorInputStream  extends InputStream {
                     index = InsertSequence(tempArray, index, (byte) 2, 1);
                 else
                     index = InsertSequence(tempArray, index, (byte) 3, 1);
+                current = (byte) (1 - current);
             }
             //Inserting the sequence into the array
             else {
-                index = InsertSequence(tempArray, index, current, b[j]);
                 current = (byte) (1 - current);
+                index = InsertSequence(tempArray, index, current, b[j]);
+
             }
         }
         for(int i=start;i<b.length;i++)

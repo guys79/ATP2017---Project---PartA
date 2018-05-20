@@ -35,7 +35,7 @@ public class BestFirstSearch extends BreadthFirstSearch {
             if(listOfStates.get(i).getPriority()<aState.getPriority())
             {
                 listOfStates.add(i,aState);
-                break;
+                return;
             }
         }
         listOfStates.add(listOfStates.size(),aState);

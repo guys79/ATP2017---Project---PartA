@@ -63,8 +63,7 @@ public class MyCompressorOutputStream extends OutputStream {
                     compressed.add((byte) (base + 1));
 
                 counter = 0;
-                if(i!=b.length-1)
-                    current=FromBinaryToInt(b[i+1]);
+
             } else {
                 if (counter >= base || current != temp) {
 
