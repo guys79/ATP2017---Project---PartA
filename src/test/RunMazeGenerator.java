@@ -25,8 +25,24 @@ public class RunMazeGenerator {
         return (int) (num);
     }
 
+    public static void fff(int []a)
+    {
+        a=new int[5];
+        a[0]=1;
+        a[1]=1;
+        a[2]=1;
+        a[3]=1;
+        a[4]=1;
+    }
     public static void main(String[] args) {
 
+        int []a={1,2,3,4,5};
+        fff(a);
+        System.out.println(a[0]+" ");
+        System.out.print(a[1]+" ");
+        System.out.print(a[2]+" ");
+        System.out.print(a[3]+" ");
+        System.out.print(a[4]+" ");
         ISearchable searchable=null;
         Maze maze;
         int [][] binMaze={{ 0, 0, 0, 1, 1, 1, 0 },

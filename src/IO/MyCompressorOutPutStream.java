@@ -5,6 +5,9 @@ import algorithms.mazeGenerators.Maze;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
+/**
+ * This class is designed to compress the given data and send it
+ */
 public class MyCompressorOutPutStream extends OutputStream {
     OutputStream out;//The out put stream
 
@@ -48,6 +51,7 @@ public class MyCompressorOutPutStream extends OutputStream {
         int base = Byte.MAX_VALUE + Math.abs(Byte.MIN_VALUE) - 2; //The maximum length of a sequence
 
         int temp;
+        //The compression
         for (int i = start; i < b.length; i++) {
 
             temp = FromBinaryToInt(b[i]);
@@ -78,14 +82,23 @@ public class MyCompressorOutPutStream extends OutputStream {
                     counter++;
             }
         }
+        //Taking care og the last sequence
         if(counter>=1)
             compressed.add((byte)counter);
-        byte[] array = new byte[compressed.size()];
-        for (int i = 0; i < array.length; i++) {
+        byte[] array = new byte[b.length];
+
+        //Transferring it to an array
+        for (int i = 0; i < compressed.size(); i++) {
             array[i] = compressed.get(i);
-            System.out.print(array[i]+" ");
+
+        }
+        //Resetting the last cells
+        for(int j=compressed.size();j<array.length;j++)
+        {
+            array[j]=0;
         }
 
+        //Writing the data
         try {
             out.write(array);
         } catch (Exception e) {
