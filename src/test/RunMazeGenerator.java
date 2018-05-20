@@ -1,6 +1,6 @@
 package test;
 
-import IO.MyCompressorOutPutStream;
+import IO.MyCompressorOutputStream;
 import algorithms.mazeGenerators.*;
 import algorithms.search.*;
 
@@ -58,7 +58,7 @@ public class RunMazeGenerator {
         Position goal=new Position(2,3);
         maze=new Maze(binMaze,start,goal);
         byte[] byteMaze=maze.toByteArray();
-        MyCompressorOutPutStream myCompressorOutPutStream=new MyCompressorOutPutStream(System.out);
+        MyCompressorOutputStream myCompressorOutPutStream=new MyCompressorOutputStream(System.out);
         write(byteMaze);
         myCompressorOutPutStream.write(byteMaze);
         //write(byteMaze);
