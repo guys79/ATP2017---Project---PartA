@@ -6,12 +6,15 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
 
-
+/**
+ * Created by Aviadjo on 3/2/2017.
+ */
 public class Server {
     private int port;
     private int listeningInterval;
     private IServerStrategy serverStrategy;
     private volatile boolean stop;
+
 
     public Server(int port, int listeningInterval, IServerStrategy serverStrategy) {
         this.port = port;
@@ -32,7 +35,10 @@ public class Server {
 
             while (!stop) {
                 try {
-                    Socket clientSocket = server.accept();
+
+                    Socket clientSocket = server.accept(); // blocking call
+
+
 
                     new Thread(() -> {
                         handleClient(clientSocket);
@@ -41,6 +47,7 @@ public class Server {
 
                 }
             }
+
             server.close();
         } catch (IOException e) {
 

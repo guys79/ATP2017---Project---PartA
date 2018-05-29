@@ -1,11 +1,12 @@
 package algorithms.search;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * This class represents the solution to the puzzle
  */
-public class Solution {
+public class Solution implements Serializable {
 
     private ArrayList<AState> sol;//The solution
 

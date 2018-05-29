@@ -2,6 +2,7 @@ package IO;
 
 import algorithms.mazeGenerators.Maze;
 
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
@@ -35,6 +36,8 @@ public class MyCompressorOutputStream extends OutputStream {
      * @param b
      */
     public void write(byte[] b) {
+
+
         //The start of the maze itself in the given array
         int start = FromBinaryToInt(b[0]) + FromBinaryToInt(b[FromBinaryToInt(b[0]) + 1]) + 2;
         //The compressed list to be
@@ -99,7 +102,8 @@ public class MyCompressorOutputStream extends OutputStream {
 
         //Writing the data
         try {
-            out.write(array);
+            ObjectOutputStream out2=new ObjectOutputStream(out);
+            out2.writeObject(array);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

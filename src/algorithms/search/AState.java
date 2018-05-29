@@ -1,12 +1,13 @@
 package algorithms.search;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * This class represents a state in a puzzle
  */
-public abstract class AState implements Comparable{
+public abstract class AState implements Comparable , Serializable {
 
     public boolean visited;//Have we been in this state already
     private int priority;//The priority of this state

@@ -1,11 +1,11 @@
 package algorithms.mazeGenerators;
 
-
+import java.io.Serializable;
 
 /**
  * This class represents a maze.
  */
-public class Maze {
+public class  Maze implements Serializable{
     //This instance of 2D array will represent our maze
     private int[][] maze;//The two dimensional array (zero's and one's)
     private Position start;//The starting position

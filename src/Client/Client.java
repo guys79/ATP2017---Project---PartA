@@ -1,8 +1,13 @@
 package Client;
+
+
+
 import java.net.InetAddress;
 import java.net.Socket;
 
-
+/**
+ * Created by Aviadjo on 3/3/2017.
+ */
 public class Client {
     private InetAddress serverIP;
     private int serverPort;
@@ -17,6 +22,8 @@ public class Client {
     public void communicateWithServer() {
         try {
             Socket theServer = new Socket(serverIP, serverPort);
+
+
             System.out.println(String.format("Client is connected to server (IP: %s, port: %s)", serverIP, serverPort));
             clientStrategy.clientStrategy(theServer.getInputStream(), theServer.getOutputStream());
             theServer.close();
