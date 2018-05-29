@@ -2,7 +2,7 @@ package Server;
 
 
 import algorithms.mazeGenerators.Maze;
-import algorithms.mazeGenerators.MyMazeGenerator;
+
 import algorithms.search.BestFirstSearch;
 import algorithms.search.SearchableMaze;
 import algorithms.search.Solution;
@@ -21,6 +21,7 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
      */
     @Override
     public void serverStrategy(InputStream inFromClient, OutputStream outToClient) {
+        System.out.println("Server Strategy Solve maze!");
         try {
             //Creating the I/O streams
             ObjectInputStream fromClient = new ObjectInputStream(inFromClient);

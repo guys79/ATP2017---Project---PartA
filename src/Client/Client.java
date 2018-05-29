@@ -1,11 +1,6 @@
 package Client;
-
-
-
-
-
-        import java.net.InetAddress;
-        import java.net.Socket;
+import java.net.InetAddress;
+import java.net.Socket;
 
 
 public class Client {
@@ -19,7 +14,7 @@ public class Client {
         this.clientStrategy = clientStrategy;
     }
 
-    public void start() {
+    public void communicateWithServer() {
         try {
             Socket theServer = new Socket(serverIP, serverPort);
             System.out.println(String.format("Client is connected to server (IP: %s, port: %s)", serverIP, serverPort));
