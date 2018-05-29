@@ -5,9 +5,7 @@ package Client;
 import java.net.InetAddress;
 import java.net.Socket;
 
-/**
- * Created by Aviadjo on 3/3/2017.
- */
+
 public class Client {
     private InetAddress serverIP;
     private int serverPort;

@@ -14,9 +14,7 @@ import java.io.*;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
-/**
- * Created by Aviadjo on 3/27/2017.
- */
+
 public class RunCommunicateWithServers {
     public static void main(String[] args) {
         //Initializing servers

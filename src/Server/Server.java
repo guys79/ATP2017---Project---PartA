@@ -6,9 +6,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
 
-/**
- * Created by Aviadjo on 3/2/2017.
- */
+
 public class Server {
     private int port;
     private int listeningInterval;
