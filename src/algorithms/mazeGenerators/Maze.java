@@ -271,19 +271,28 @@ public class  Maze implements Serializable{
         return  theMaze;
 
     }
+
+    /**
+     * This function will convert the maze into string (not including the size and the start/goal positions)
+     * @return - The representation of the maze in string
+     */
     public String convertMazeToString()
     {
 
-
+        //The optimal number for compression (in big mazes). The reason for it is complicated.. you are most welcome to contact me and i'll explain :)
         int MAGIC_NUMBER=62;
+
+        //The size of the maze (number of cells)
         int size=this.getNumOfRows()*this.getNumOfColumns();
 
+        //How many full times the MAGIC NUMBER is in the size of the array
         int div=size/MAGIC_NUMBER;
         int remain=size%MAGIC_NUMBER;
 
         long num=0;
         String str="";
 
+        //Transforming the array to it's representation in string
         for(int i=0;i<div;i++)
         {
             for(int j=MAGIC_NUMBER*i;j<MAGIC_NUMBER*i+MAGIC_NUMBER;j++) {

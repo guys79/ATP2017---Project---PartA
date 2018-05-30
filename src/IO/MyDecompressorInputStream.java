@@ -122,11 +122,5 @@ public class MyDecompressorInputStream  extends InputStream {
         System.out.println();
 
     }
-/**
- * A BIG PROBLEM!!!!
- * I HAVE TO KNOW WHAT IS AFTER THE POSITION...
- * SO I'LL ALWAYS START A SEQUENCE OF 0 AFTER
- * 000EOO - 3 -2 2
- * 000E111 - 3 -2 0 3
- */
+
 }

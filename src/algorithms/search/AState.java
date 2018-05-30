@@ -29,6 +29,20 @@ public abstract class AState implements Comparable , Serializable {
     }
 
     /**
+     * The Copy constructor
+     *
+     * @param aState - The other astate
+     */
+    protected AState(AState aState) {
+        visited = aState.visited;
+        this.priority = aState.priority;
+        possibleNextStates = new ArrayList<>();
+        predecessor=null;
+        this.stateToString=aState.stateToString;
+    }
+
+
+    /**
      * This function will compare to AStates using the priority
      * @param o - The object
      * @return - A negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object.

@@ -102,8 +102,8 @@ public class MyCompressorOutputStream extends OutputStream {
 
         //Writing the data
         try {
-            ObjectOutputStream out2=new ObjectOutputStream(out);
-            out2.writeObject(array);
+           // ObjectOutputStream out2=new ObjectOutputStream(out);
+            out.write(array);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

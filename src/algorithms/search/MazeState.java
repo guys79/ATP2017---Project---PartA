@@ -18,6 +18,17 @@ public class MazeState extends AState {
         this.stateToString="{"+curr.GetRowIndex()+","+curr.GetColumnIndex()+"}";
 
     }
+    /**
+     * The copy constructor
+     * @param mazeState - The other MazeState
+     */
+    public MazeState(MazeState mazeState)
+    {
+        super(mazeState);
+        current=mazeState.current;
+        this.stateToString=mazeState.stateToString;
+
+    }
 
     /**
      *
