@@ -7,6 +7,7 @@ import IO.MyDecompressorInputStream;
 import Server.*;
 import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.MyMazeGenerator;
+import algorithms.mazeGenerators.Position;
 import algorithms.search.AState;
 import algorithms.search.Solution;
 
@@ -18,22 +19,22 @@ import java.util.ArrayList;
 public class RunCommunicateWithServers {
     public static void main(String[] args) {
         //Initializing servers
-      //  Server mazeGeneratingServer = new Server(5400, 1000, new ServerStrategyGenerateMaze());
+        Server mazeGeneratingServer = new Server(5400, 1000, new ServerStrategyGenerateMaze());
         Server solveSearchProblemServer = new Server(5401, 1000, new ServerStrategySolveSearchProblem());
         //Server stringReverserServer = new Server(5402, 1000, new ServerStrategyStringReverser());
 
         //Starting  servers
         solveSearchProblemServer.start();
-       // mazeGeneratingServer.start();
+        mazeGeneratingServer.start();
         //stringReverserServer.start();
 
         //Communicating with servers
-       // CommunicateWithServer_MazeGenerating();
+        CommunicateWithServer_MazeGenerating();
         CommunicateWithServer_SolveSearchProblem();
         //CommunicateWithServer_StringReverser();
 
         //Stopping all servers
-       // mazeGeneratingServer.stop();
+        mazeGeneratingServer.stop();
         solveSearchProblemServer.stop();
         //stringReverserServer.stop();
     }
@@ -50,7 +51,7 @@ public class RunCommunicateWithServers {
 
                         toServer.flush();
 
-                        int[] mazeDimensions = new int[]{5, 5};
+                        int[] mazeDimensions = new int[]{10, 6};
 
                         toServer.writeObject(mazeDimensions); //send maze dimensions to server
                         toServer.flush();
@@ -88,7 +89,20 @@ public class RunCommunicateWithServers {
                         ObjectInputStream fromServer = new ObjectInputStream(inFromServer);
                         toServer.flush();
                         MyMazeGenerator mg = new MyMazeGenerator();
-                        Maze maze = mg.generate(5, 5);
+                        Maze maze = mg.generate(25, 25);
+                        System.out.println(maze.convertMazeToString());
+                   /*     Maze maze;
+                        int [][] binMaze={{ 0, 0, 0, 1, 1, 1, 0 },// 0 0 0 1 1 1 0
+                                          { 0, 1, 0, 0, 0, 1, 0 },// 0 1 0 0 0 1 0
+                                          { 0, 0, 1, 0, 0, 0, 1 },// 0 0 1 E 0 0 1
+                                          { 0, 1, 1, 1, 0, 0, 0 },// 0 1 1 1 0 0 0
+                                          { 0, 0, 0, 0, 0, 0, 1 },// 0 0 0 0 S 0 1
+                                          { 0, 0, 0, 0, 0, 0, 1 },// 0 0 0 0 0 0 1
+                                          { 1, 0, 1, 0, 0, 0, 0}};// 1 0 1 0 0 0 0
+
+                        Position start=new Position(4,4);
+                        Position goal=new Position(2,3);
+                        maze=new Maze(binMaze,start,goal);*/
                         maze.print();
                         toServer.writeObject(maze); //send maze to server
                         toServer.flush();

@@ -271,4 +271,34 @@ public class  Maze implements Serializable{
         return  theMaze;
 
     }
+    public String convertMazeToString()
+    {
+
+
+        int MAGIC_NUMBER=62;
+        int size=this.getNumOfRows()*this.getNumOfColumns();
+
+        int div=size/MAGIC_NUMBER;
+        int remain=size%MAGIC_NUMBER;
+
+        long num=0;
+        String str="";
+
+        for(int i=0;i<div;i++)
+        {
+            for(int j=MAGIC_NUMBER*i;j<MAGIC_NUMBER*i+MAGIC_NUMBER;j++) {
+                num = num + (long) (Math.pow(2,j-MAGIC_NUMBER*i))*this.maze[j/this.getNumOfColumns()][j-this.getNumOfColumns()*(j/this.getNumOfColumns())];
+
+            }
+            str+=num+",";
+            num=0;
+
+        }
+        for(int j=MAGIC_NUMBER*div;j<MAGIC_NUMBER*div+remain;j++) {
+            num = num + (long) (Math.pow(2,j-MAGIC_NUMBER*div))*this.maze[j/this.getNumOfColumns()][j-this.getNumOfColumns()*(j/this.getNumOfColumns())];
+
+        }
+        str+=num+",";
+        return str;
+    }
 }

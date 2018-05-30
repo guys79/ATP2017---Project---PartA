@@ -52,8 +52,7 @@ public class RunMazeGenerator {
                           { 0, 0, 0, 0, 0, 0, 1 },
                           { 0, 0, 0, 0, 0, 0, 1 },
                           { 1, 0, 1, 0, 0, 0, 0}};
-        //000 111 00 1 000 1 0000G00 1 0 111 0000000S0 1 000000 11 0 1 0000
-        // 3   3   2 1  3  1  4 -2 2 1 1  3      9     1     6   2 1 1  4
+
         Position start=new Position(4,4);
         Position goal=new Position(2,3);
         maze=new Maze(binMaze,start,goal);

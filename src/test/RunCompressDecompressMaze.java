@@ -48,7 +48,7 @@ public class RunCompressDecompressMaze {
 
         }
 
-        System.out.println("fuck");
+
         maze.print();
         Print(savedMazeBytes);
         Print(maze.toByteArray());

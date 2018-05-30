@@ -25,14 +25,8 @@ public class ServerStrategyGenerateMaze implements IServerStrategy {
             //Creating the I/O streams
             ObjectInputStream fromClient = new ObjectInputStream(inFromClient);
 
-
-
-
-            /**********************STUCK HERE************************/
             //The size of the Maze
             int [] mazeSize=(int []) fromClient.readObject();
-            /**********************STUCK HERE************************/
-
 
             if(mazeSize.length!=2)
             {
@@ -41,6 +35,8 @@ public class ServerStrategyGenerateMaze implements IServerStrategy {
             //Generating the maze
             MyMazeGenerator mg=new MyMazeGenerator();
             Maze maze=mg.generate(mazeSize[0],mazeSize[1]);
+           // maze.print();
+            //System.out.println();
             OutputStream toClient=new MyCompressorOutputStream(outToClient);
             //Sending the maze via the compression output stream
             byte[] mazeByte=maze.toByteArray();
