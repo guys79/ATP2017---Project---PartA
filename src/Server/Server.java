@@ -34,7 +34,7 @@ class RunMaze implements Runnable{
 
     /**
      * This function will handle the client using the given strategy
-     * @param clientSocket - The clientSocket
+     * @param clientSocket - The clientSocket.
      */
 
     private void handleClient(Socket clientSocket) {
