@@ -1,5 +1,9 @@
 package Server;
 
+
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.util.Properties;
 import java.util.concurrent.ExecutorService;
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -128,5 +132,21 @@ public class Server {
     public void stop() {
 
         stop = true;
+    }
+    public static class configurations {
+
+        public static void main(String[] args) throws IOException {
+            Properties prop = new Properties();
+            OutputStream os;
+
+            os = new FileOutputStream("Resources\\config.properties");
+            prop.setProperty("numberOfThreads", "2");
+            prop.setProperty("createMazeAlgorithm","SimpleMazeGenerator");
+            prop.setProperty("solveMazeAlgorithm","BestFirstSearch");
+            prop.setProperty("creators","YonatanGuy");
+
+            //saves the properties in the file
+            prop.store(os, null);
+        }
     }
 }
