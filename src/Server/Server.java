@@ -1,6 +1,7 @@
 package Server;
 
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.Properties;
@@ -95,7 +96,9 @@ public class Server {
      */
     private void runServer() {
         //Initializing the threadPool
-        int threadPoolSize=Runtime.getRuntime().availableProcessors()*2;
+        String numOfTreads=configurations.get("threadPoolSize");
+        int threadPoolSize;
+        threadPoolSize = Integer.parseInt(configurations.get("threadPoolSize"));
         ExecutorService executorService=Executors.newCachedThreadPool();
         ThreadPoolExecutor threadPoolExecutor= (ThreadPoolExecutor)executorService;
         threadPoolExecutor.setCorePoolSize(threadPoolSize);
@@ -133,20 +136,32 @@ public class Server {
 
         stop = true;
     }
+
     public static class configurations {
+        private static Properties prop = new Properties();
 
-        public static void main(String[] args) throws IOException {
-            Properties prop = new Properties();
-            OutputStream os;
-
-            os = new FileOutputStream("Resources\\config.properties");
-            prop.setProperty("numberOfThreads", "2");
-            prop.setProperty("createMazeAlgorithm","SimpleMazeGenerator");
-            prop.setProperty("solveMazeAlgorithm","BestFirstSearch");
-            prop.setProperty("creators","YonatanGuy");
-
-            //saves the properties in the file
-            prop.store(os, null);
+        public static String get(String key) {
+            try {
+                FileInputStream input = new FileInputStream("config.properties");
+                prop.load(input);
+            }
+            catch (IOException exeption) {
+                return "not found";
+            }
+            return prop.getProperty(key);
         }
+
+        public static void set(String key,String value){
+            try {
+                prop.setProperty(key, value);
+                OutputStream o = new FileOutputStream("config.properties");
+                prop.store(o, null);
+            }
+            catch(IOException exeption){
+            }
+        }
+
     }
 }
+
+

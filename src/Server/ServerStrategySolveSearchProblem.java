@@ -198,11 +198,21 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
     {
 
         //Creating the tools to solve the maze
-        BestFirstSearch bestFirstSearch = new BestFirstSearch();
+        ASearchingAlgorithm search=null;
+        String searchingAlgorhithm = Server.configurations.get("ASearchingAlgorithm");
+        if(searchingAlgorhithm.equals("bfs")){
+            search=new BestFirstSearch();
+        }
+        if(searchingAlgorhithm.equals("dfs")){
+            search=new DepthFirstSearch();
+        }
+        if(searchingAlgorhithm.equals("brfs")){
+            search=new BreadthFirstSearch();
+        }
         SearchableMaze searchableMaze = new SearchableMaze(maze);
 
         //Solving the maze
-        Solution solution= bestFirstSearch.solve(searchableMaze);
+        Solution solution= search.solve(searchableMaze);
 
         //Restoring the solution
         ArrayList<AState>list=solution.getSolutionPath();
