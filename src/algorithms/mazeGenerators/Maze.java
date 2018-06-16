@@ -38,6 +38,8 @@ public class  Maze implements Serializable{
         this.maze = MyMaze;
     }
 
+
+
     /**
      * The constructor of the maze
      * @param MyMaze - A byte array that represents the maze
@@ -90,6 +92,22 @@ public class  Maze implements Serializable{
 
     }
 
+    /**
+     * This function will return the maze using deep copy
+     * @return - The maze
+     */
+    public int[][] getMaze()
+    {
+        int [][]newMaze=new int[this.maze.length][this.maze[0].length];
+        for(int i=0;i<this.maze.length;i++)
+        {
+            for(int j=0; j<maze[0].length;j++)
+            {
+                newMaze[i][j]=this.maze[i][j];
+            }
+        }
+        return newMaze;
+    }
     /**
      * This function converts signed binary number into a number (unsigned binary)
      * @param num - The number
